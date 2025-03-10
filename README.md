@@ -4,6 +4,8 @@ A cyberpunk-styled interactive visualization demonstrating how Conflux multipath
 
 [![Conflux Tor Network Visualization](https://i.ibb.co/ynwXXzCq/yt.png)](https://www.youtube.com/watch?v=obD8vN7kDnI)
 
+[Live View](https://doingfedtime.com/conflux-tor-network-visualization/)
+
 ## Overview
 
 This visualization provides a side-by-side comparison between standard Tor routing and Conflux-optimized routing, showing how multipath connections can significantly improve performance while maintaining the same security guarantees.
