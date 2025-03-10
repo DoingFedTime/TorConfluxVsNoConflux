@@ -2,11 +2,7 @@
 
 A cyberpunk-styled interactive visualization demonstrating how Conflux multipath routing technology can double the speed of the Tor network.
 
-View it live here: 
-![Conflux Tor Network Visualization](https://doingfedtime.com/conflux-tor-network-visualization/)
-
-Detailed video on Conflux: 
-[![Conflux Tor Network Visualization](https://img.youtube.com/vi/VIDEO_ID/0.jpg)](https://www.youtube.com/watch?v=VIDEO_ID)
+[![Conflux Tor Network Visualization](https://i.ibb.co/ynwXXzCq/yt.png)](https://www.youtube.com/watch?v=obD8vN7kDnI)
 
 ## Overview
 
@@ -24,14 +20,6 @@ Conflux is a multipath onion routing technique that enables the Tor network to u
 - **Responsive Design**: Works on desktop and mobile browsers
 - **Educational Tool**: Helps users understand the benefits of multipath routing for anonymity networks
 
-## Performance Improvements Demonstrated
-
-| Metric | Standard Tor | Conflux Optimized | Improvement |
-|--------|-------------|-------------------|-------------|
-| Speed | 2.5 Mbps | 5.0 Mbps | 100% |
-| Page Load Time | 18.2s | 9.1s | 50% |
-| File Download (25MB) | 75s | 37s | 51% |
-| Network Capacity | 65% | 85% | 31% |
 
 ## Usage
 
