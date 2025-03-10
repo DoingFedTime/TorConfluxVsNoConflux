@@ -2,8 +2,11 @@
 
 A cyberpunk-styled interactive visualization demonstrating how Conflux multipath routing technology can double the speed of the Tor network.
 
+To learn more about this in video form click on the picture below: 
+
 [![Conflux Tor Network Visualization](https://i.ibb.co/ynwXXzCq/yt.png)](https://www.youtube.com/watch?v=obD8vN7kDnI)
 
+To see the comparison go to: 
 [Live View](https://doingfedtime.com/conflux-tor-network-visualization/)
 
 ## Overview
