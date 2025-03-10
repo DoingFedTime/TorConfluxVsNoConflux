@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    :root {
+      --primary-dark: #0c0e15;
+      --secondary-dark: #151a23;
+      --panel-dark: #1a1e24;
+      --accent-blue: #00a2ff;
+      --accent-purple: #8a2be2;
+      --accent-teal: #00e8c6;
+      --accent-red: #ff4c4c;
+      --text-primary: #e6e6e6;
+      --text-secondary: #a7b6c9;
+      --text-muted: #75849a;
+      --tor-purple: #7d4698;
+      --tor-green: #00c853;
+      --tor-blue: #00a2ff;
+      --tor-yellow: #ffc107;
+    }
+    
+    body {
+      background-color: var(--primary-dark);
+      color: var(--text-primary);
+      font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      line-height: 1.5;
+    }
+    
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      background-color: var(--primary-dark);
+      border-radius: 8px;
+      border: 1px solid rgba(138, 43, 226, 0.4);
+      box-shadow: 0 0 30px rgba(120, 0, 255, 0.15);
+      overflow: hidden;
+    }
+    
+    .header {
+      background: linear-gradient(90deg, #2b0064 0%, #00304b 100%);
+      padding: 20px;
+      text-align: center;
+      border-bottom: 1px solid rgba(110, 48, 192, 0.5);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .header::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle at center, rgba(138, 43, 226, 0.1) 0%, rgba(0, 0, 0, 0) 70%);
+      z-index: 0;
+    }
+    
+    .header::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(0, 162, 255, 0.5), transparent);
+    }
+    
+    .title {
+      font-size: 28px;
+      font-weight: bold;
+      margin: 0;
+      background: linear-gradient(90deg, #09d9ff, #a742ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      position: relative;
+      z-index: 1;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    .subtitle {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-top: 5px;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+      letter-spacing: 1px;
+    }
+    
+    /* Social Links */
+    .social-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 15px;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .social-button {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: rgba(15, 18, 24, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .social-button::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+      z-index: 0;
+    }
+    
+    .social-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+    
+    .social-icon {
+      width: 18px;
+      height: 18px;
+      color: var(--text-primary);
+      position: relative;
+      z-index: 1;
+    }
+    
+    .website-button:hover {
+      background-color: rgba(0, 162, 255, 0.2);
+      border-color: var(--accent-blue);
+    }
+    
+    .github-button:hover {
+      background-color: rgba(110, 84, 148, 0.2);
+      border-color: #6e5494;
+    }
+    
+    .youtube-button:hover {
+      background-color: rgba(255, 0, 0, 0.2);
+      border-color: #ff0000;
+    }
+    
+    .facebook-button:hover {
+      background-color: rgba(66, 103, 178, 0.2);
+      border-color: #4267B2;
+    }
+    
+    .twitter-button:hover {
+      background-color: rgba(29, 161, 242, 0.2);
+      border-color: #1DA1F2;
+    }
+    
+    .linkedin-button:hover {
+      background-color: rgba(0, 119, 181, 0.2);
+      border-color: #0077B5;
+    }
+    
+    .email-button:hover {
+      background-color: rgba(234, 67, 53, 0.2);
+      border-color: #EA4335;
+    }
+    
+    .instagram-button:hover {
+      background-color: rgba(225, 48, 108, 0.2);
+      border-color: #E1306C;
+    }
+    
+    .rumble-button:hover {
+      background-color: rgba(85, 172, 238, 0.2);
+      border-color: #55acee;
+    }
+    
+    .tiktok-button:hover {
+      background-color: rgba(238, 29, 82, 0.2);
+      border-color: #EE1D52;
+    }
+    
+    .info-panel {
+      background-color: rgba(15, 18, 24, 0.6);
+      border: 1px solid rgba(138, 43, 226, 0.2);
+      border-radius: 4px;
+      padding: 15px;
+      margin: 20px;
+    }
+    
+    .info-title {
+      font-size: 16px;
+      color: var(--accent-blue);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+    }
+    
+    .info-title svg {
+      margin-right: 8px;
+    }
+    
+    .info-content {
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+    
+    .highlight {
+      color: var(--accent-teal);
+      font-weight: bold;
+    }
+    
+    .comparison-container {
+      display: flex;
+      flex-direction: column;
+      padding: 0 20px 20px;
+      gap: 30px;
+    }
+    
+    .network-section {
+      background-color: var(--secondary-dark);
+      border-radius: 8px;
+      padding: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .network-section::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(0, 0, 0, 0), rgba(138, 43, 226, 0.05));
+      z-index: 0;
+    }
+    
+    .standard-section {
+      border: 1px solid rgba(199, 142, 0, 0.4);
+    }
+    
+    .conflux-section {
+      border: 1px solid rgba(0, 200, 83, 0.4);
+    }
+    
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 15px;
+      position: relative;
+      z-index: 1;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding-bottom: 15px;
+    }
+    
+    .section-title {
+      font-size: 20px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+    }
+    
+    .section-badge {
+      font-size: 12px;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-weight: bold;
+      margin-left: 15px;
+    }
+    
+    .standard-title {
+      color: var(--tor-yellow);
+    }
+    
+    .conflux-title {
+      color: var(--tor-green);
+    }
+    
+    .standard-badge {
+      background-color: rgba(255, 193, 7, 0.15);
+      color: var(--tor-yellow);
+    }
+    
+    .conflux-badge {
+      background-color: rgba(0, 200, 83, 0.15);
+      color: var(--tor-green);
+    }
+    
+    .network-content {
+      display: flex;
+      flex-direction: row;
+      gap: 20px;
+    }
+    
+    .network-visual {
+      flex: 1;
+      height: 220px;
+      position: relative;
+      background-color: rgba(12, 14, 21, 0.7);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    
+    .network-visual::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-size: 20px 20px;
+      background-image: linear-gradient(rgba(70, 90, 120, 0.1) 1px, transparent 1px), 
+                        linear-gradient(90deg, rgba(70, 90, 120, 0.1) 1px, transparent 1px);
+      z-index: 0;
+    }
+    
+    .network-stats {
+      width: 230px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    
+    .tor-network {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+    
+    .legend {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      background-color: rgba(15, 18, 24, 0.8);
+      border-radius: 4px;
+      padding: 5px 8px;
+      font-size: 11px;
+      color: var(--text-muted);
+      z-index: 10;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .legend-item {
+      display: flex;
+      align-items: center;
+      margin: 3px 0;
+    }
+    
+    .legend-color {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      margin-right: 5px;
+    }
+    
+    /* Node styles */
+    .node {
+      position: absolute;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 3;
+      transition: box-shadow 0.3s ease;
+    }
+    
+    .user-node {
+      width: 24px;
+      height: 24px;
+      background-color: rgba(255, 193, 7, 0.8);
+      box-shadow: 0 0 10px rgba(255, 193, 7, 0.4);
+    }
+    
+    .guard-node {
+      width: 20px;
+      height: 20px;
+      background-color: rgba(125, 70, 152, 0.8);
+      box-shadow: 0 0 8px rgba(125, 70, 152, 0.4);
+    }
+    
+    .middle-node {
+      width: 20px;
+      height: 20px;
+      background-color: rgba(125, 70, 152, 0.8);
+      box-shadow: 0 0 8px rgba(125, 70, 152, 0.4);
+    }
+    
+    .exit-node {
+      width: 20px;
+      height: 20px;
+      background-color: rgba(76, 175, 80, 0.8);
+      box-shadow: 0 0 10px rgba(76, 175, 80, 0.4);
+    }
+    
+    .destination-node {
+      width: 24px;
+      height: 24px;
+      background-color: rgba(138, 43, 226, 0.8);
+      box-shadow: 0 0 10px rgba(138, 43, 226, 0.4);
+    }
+    
+    .node-pulse {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background-color: inherit;
+      opacity: 0.4;
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 0.4; }
+      50% { transform: scale(1.5); opacity: 0; }
+      100% { transform: scale(1); opacity: 0; }
+    }
+    
+    .node-icon {
+      width: 12px;
+      height: 12px;
+      color: rgba(255, 255, 255, 0.9);
+    }
+    
+    /* Connection lines */
+    .connection {
+      position: absolute;
+      height: 2px;
+      transform-origin: left center;
+      z-index: 2;
+    }
+    
+    .standard-connection {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+    
+    .primary-connection {
+      background-color: rgba(0, 200, 83, 0.3);
+    }
+    
+    .secondary-connection {
+      background-color: rgba(0, 162, 255, 0.3);
+    }
+    
+    /* Data packets */
+    .data-packet {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      z-index: 5;
+    }
+    
+    .standard-packet {
+      background-color: var(--tor-yellow);
+      box-shadow: 0 0 5px rgba(255, 193, 7, 0.6);
+    }
+    
+    .primary-packet {
+      background-color: var(--tor-green);
+      box-shadow: 0 0 5px rgba(0, 200, 83, 0.6);
+    }
+    
+    .secondary-packet {
+      background-color: var(--tor-blue);
+      box-shadow: 0 0 5px rgba(0, 162, 255, 0.6);
+      width: 5px;
+      height: 5px;
+    }
+    
+    .stat-box {
+      background-color: rgba(12, 14, 21, 0.7);
+      border-radius: 6px;
+      padding: 12px;
+      position: relative;
+    }
+    
+    .stat-label {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+    
+    .stat-value {
+      font-size: 20px;
+      font-family: 'Courier New', monospace;
+      font-weight: bold;
+    }
+    
+    .standard-value {
+      color: var(--tor-yellow);
+    }
+    
+    .conflux-value {
+      color: var(--tor-green);
+    }
+    
+    .progress-container {
+      margin-top: 8px;
+    }
+    
+    .progress-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 5px;
+      font-size: 12px;
+    }
+    
+    .progress-label {
+      color: var(--text-muted);
+    }
+    
+    .progress-percentage {
+      font-weight: bold;
+    }
+    
+    .standard-percentage {
+      color: var(--tor-yellow);
+    }
+    
+    .conflux-percentage {
+      color: var(--tor-green);
+    }
+    
+    .progress-bar {
+      height: 6px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    
+    .progress-fill-standard {
+      height: 100%;
+      background-color: var(--tor-yellow);
+      width: 65%;
+    }
+    
+    .progress-fill-conflux {
+      height: 100%;
+      background-color: var(--tor-green);
+      width: 85%;
+    }
+    
+    .use-cases {
+      margin-top: 10px;
+    }
+    
+    .use-case-label {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+    
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+    
+    .tag {
+      font-size: 11px;
+      padding: 4px 8px;
+      border-radius: 4px;
+      background-color: rgba(30, 36, 50, 0.6);
+    }
+    
+    .standard-tag {
+      color: var(--tor-yellow);
+    }
+    
+    .conflux-tag {
+      color: var(--tor-green);
+    }
+    
+    .performance-section {
+      padding: 20px;
+      background-color: rgba(21, 26, 35, 0.7);
+      border-top: 1px solid rgba(138, 43, 226, 0.2);
+    }
+    
+    .performance-title {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 15px;
+      background: linear-gradient(90deg, var(--tor-yellow), var(--tor-green));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .impact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 15px;
+    }
+    
+    .impact-box {
+      background-color: rgba(15, 18, 24, 0.7);
+      border-radius: 8px;
+      padding: 15px;
+    }
+    
+    .impact-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    
+    .impact-icon {
+      width: 24px;
+      height: 24px;
+      margin-right: 10px;
+      color: #b388ff;
+    }
+    
+    .impact-header-text {
+      color: #b388ff;
+      font-weight: bold;
+    }
+    
+    .impact-text {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+    
+    .footer {
+      text-align: center;
+      padding: 15px;
+      font-size: 11px;
+      color: var(--text-muted);
+      border-top: 1px solid rgba(42, 47, 58, 0.7);
+      letter-spacing: 1px;
+    }
+    
+    /* ANIMATIONS */
+    @keyframes standardPacketMove {
+      0% { opacity: 0; transform: translate(0, 0) scale(0.8); }
+      10% { opacity: 1; transform: translate(var(--x1), var(--y1)) scale(1); }
+      30% { opacity: 1; transform: translate(var(--x2), var(--y2)) scale(1); }
+      50% { opacity: 1; transform: translate(var(--x3), var(--y3)) scale(1); }
+      70% { opacity: 1; transform: translate(var(--x4), var(--y4)) scale(1); }
+      90% { opacity: 1; transform: translate(var(--x5), var(--y5)) scale(0.9); }
+      100% { opacity: 0; transform: translate(var(--x5), var(--y5)) scale(0.8); }
+    }
+    
+    @keyframes primaryPacketMove {
+      0% { opacity: 0; transform: translate(0, 0) scale(0.8); }
+      5% { opacity: 1; transform: translate(var(--x1), var(--y1)) scale(1); }
+      25% { opacity: 1; transform: translate(var(--x2), var(--y2)) scale(1); }
+      45% { opacity: 1; transform: translate(var(--x3), var(--y3)) scale(1); }
+      65% { opacity: 1; transform: translate(var(--x4), var(--y4)) scale(0.9); }
+      85% { opacity: 1; transform: translate(var(--x5), var(--y5)) scale(0.8); }
+      100% { opacity: 0; transform: translate(var(--x6), var(--y6)) scale(0.7); }
+    }
+    
+    @keyframes secondaryPacketMove {
+      0% { opacity: 0; transform: translate(0, 0) scale(0.7); }
+      5% { opacity: 0.8; transform: translate(var(--x1), var(--y1)) scale(0.8); }
+      25% { opacity: 0.9; transform: translate(var(--x2), var(--y2)) scale(0.9); }
+      45% { opacity: 1; transform: translate(var(--x3), var(--y3)) scale(0.9); }
+      65% { opacity: 0.9; transform: translate(var(--x4), var(--y4)) scale(0.8); }
+      85% { opacity: 0.8; transform: translate(var(--x5), var(--y5)) scale(0.7); }
+      100% { opacity: 0; transform: translate(var(--x6), var(--y6)) scale(0.6); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1 class="title">Tor Network with Conflux Optimization</h1>
+      <p class="subtitle">VISUALIZING 2X SPEED IMPROVEMENT THROUGH MULTIPATH ROUTING</p>
+      
+      <div class="social-links">
+        <a href="https://www.sambent.com" class="social-button website-button" title="Official Website">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="social-icon">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="2" y1="12" x2="22" y2="12"></line>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+          </svg>
+        </a>
+        <a href="https://github.com/DoingFedTime" class="social-button github-button" title="GitHub">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="social-icon">
+            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+          </svg>
+        </a>
+        <a href="https://youtube.com/@sam_bent" class="social-button youtube-button" title="YouTube">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="social-icon">
+            <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+            <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+          </svg>
+        </a>
+        <a href="https://www.facebook.com/TheOfficialSamBent/" class="social-button facebook-button" title="Facebook">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="social-icon">
+            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+          </svg>
+        </a>
+        <a href="https://twitter.com/DoingFedTime" class="social-button twitter-button" title="Twitter/X">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="social-icon">
+            <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+          </svg>
+        </a>
+        <a href="https://www.linkedin.com/in/sam-bent/" class="social-button linkedin-button" title="LinkedIn">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="social-icon">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+            <rect x="2" y="9" width="4" height="12"></rect>
+            <circle cx="4" cy="4" r="2"></circle>
+          </svg>
+        </a>
+        <a href="mailto:contact@sambent.com" class="social-button email-button" title="Email">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="social-icon">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+            <polyline points="22,6 12,13 2,6"></polyline>
+          </svg>
+        </a>
+        <a href="https://www.instagram.com/sambentoffical/" class="social-button instagram-button" title="Instagram">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="social-icon">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+          </svg>
+        </a>
+        <a href="https://rumble.com/c/DoingFedTime" class="social-button rumble-button" title="Rumble">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="social-icon">
+            <polygon points="23 7 16 12 23 17 23 7"></polygon>
+            <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+          </svg>
+        </a>
+      </div>
+    </div>
+    
+    <div class="info-panel">
+      <div class="info-title">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="12" y1="16" x2="12" y2="12"></line>
+          <line x1="12" y1="8" x2="12.01" y2="8"></line>
+        </svg>
+        What is Conflux?
+      </div>
+      <div class="info-content">
+        Conflux is a multipath onion routing technique that enables the Tor network to utilize multiple circuits simultaneously for a single connection. Unlike standard Tor that sends all traffic through a single 3-relay path, Conflux splits traffic across multiple paths and combines them at the exit relay, effectively <span class="highlight">doubling throughput</span> while maintaining the same security guarantees.
+      </div>
+    </div>
+    
+    <div class="comparison-container">
+      <!-- Standard Tor Network -->
+      <div class="network-section standard-section">
+        <div class="section-header">
+          <div class="section-title standard-title">
+            STANDARD TOR
+            <div class="section-badge standard-badge">Single Path</div>
+          </div>
+          <div class="stat-value standard-value">2.5 Mbps</div>
+        </div>
+        
+        <div class="network-content">
+          <div class="network-visual">
+            <div class="tor-network">
+              <!-- User Node -->
+              <div class="node user-node" style="top: 110px; left: 40px;">
+                <div class="node-pulse"></div>
+                <svg class="node-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <path d="M12 8v8"></path>
+                  <path d="M8 12h8"></path>
+                </svg>
+              </div>
+              
+              <!-- Guard Node -->
+              <div class="node guard-node" style="top: 110px; left: 120px;">
+                <svg class="node-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                </svg>
+              </div>
+              
+              <!-- Middle Node -->
+              <div class="node middle-node" style="top: 110px; left: 200px;">
+                <svg class="node-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                  <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                </svg>
+              </div>
+              
+              <!-- Exit Node -->
+              <div class="node exit-node" style="top: 110px; left: 280px;">
+                <svg class="node-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
+                  <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
+                  <line x1="6" y1="1" x2="6" y2="4"></line>
+                  <line x1="10" y1="1" x2="10" y2="4"></line>
+                  <line x1="14" y1="1" x2="14" y2="4"></line>
+                </svg>
+              </div>
+              
+              <!-- Destination -->
+              <div class="node destination-node" style="top: 110px; left: 360px;">
+                <svg class="node-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="2" y1="12" x2="22" y2="12"></line>
+                  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                </svg>
+              </div>
+              
+              <!-- Connections -->
+              <div class="connection standard-connection" style="top: 110px; left: 52px; width: 68px;"></div>
+              <div class="connection standard-connection" style="top: 110px; left: 130px; width: 70px;"></div>
+              <div class="connection standard-connection" style="top: 110px; left: 210px; width: 70px;"></div>
+              <div class="connection standard-connection" style="top: 110px; left: 290px; width: 70px;"></div>
+              
+              <!-- Data Packets -->
+              <div class="data-packet standard-packet" style="top: 110px; left: 40px; animation: standardPacketMove 7s infinite; --x1: 40px; --y1: 0px; --x2: 80px; --y2: 0px; --x3: 160px; --y3: 0px; --x4: 240px; --y4: 0px; --x5: 320px; --y5: 0px;"></div>
+              <div class="data-packet standard-packet" style="top: 110px; left: 40px; animation: standardPacketMove 7s infinite 1.75s; --x1: 40px; --y1: 0px; --x2: 80px; --y2: 0px; --x3: 160px; --y3: 0px; --x4: 240px; --y4: 0px; --x5: 320px; --y5: 0px;"></div>
+              <div class="data-packet standard-packet" style="top: 110px; left: 40px; animation: standardPacketMove 7s infinite 3.5s; --x1: 40px; --y1: 0px; --x2: 80px; --y2: 0px; --x3: 160px; --y3: 0px; --x4: 240px; --y4: 0px; --x5: 320px; --y5: 0px;"></div>
+              <div class="data-packet standard-packet" style="top: 110px; left: 40px; animation: standardPacketMove 7s infinite 5.25s; --x1: 40px; --y1: 0px; --x2: 80px; --y2: 0px; --x3: 160px; --y3: 0px; --x4: 240px; --y4: 0px; --x5: 320px; --y5: 0px;"></div>
+              
+              <div class="legend">
+                <div class="legend-item">
+                  <div class="legend-color" style="background-color: var(--tor-yellow);"></div>
+                  <span>User</span>
+                </div>
+                <div class="legend-item">
+                  <div class="legend-color" style="background-color: var(--tor-purple);"></div>
+                  <span>Relay Node</span>
+                </div>
+                <div class="legend-item">
+                  <div class="legend-color" style="background-color: var(--tor-green);"></div>
+                  <span>Exit Node</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="network-stats">
+            <div class="stat-box">
+              <div class="stat-label">Page Load Time</div>
+              <div class="stat-value standard-value">18.2s</div>
+            </div>
+            
+            <div class="stat-box">
+              <div class="stat-label">File Download (25MB)</div>
+              <div class="stat-value standard-value">75s</div>
+            </div>
+            
+            <div class="stat-box">
+              <div class="progress-container">
+                <div class="progress-header">
+                  <div class="progress-label">Network Capacity</div>
+                  <div class="progress-percentage standard-percentage">65%</div>
+                </div>
+                <div class="progress-bar">
+                  <div class="progress-fill-standard"></div>
+                </div>
+              </div>
+              
+              <div class="use-cases">
+                <div class="use-case-label">Primary Use Cases</div>
+                <div class="tags">
+                  <div class="tag standard-tag">Basic browsing</div>
+                  <div class="tag standard-tag">Text communication</div>
+                  <div class="tag standard-tag">Small file transfers</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Conflux Tor Network -->
+      <div class="network-section conflux-section">
+        <div class="section-header">
+          <div class="section-title conflux-title">
+            CONFLUX OPTIMIZED
+            <div class="section-badge conflux-badge">Multi Path</div>
+          </div>
+          <div class="stat-value conflux-value">5.0 Mbps</div>
+        </div>
+        
+        <div class="network-content">
+          <div class="network-visual">
+            <div class="tor-network">
+              <!-- User Node -->
+              <div class="node user-node" style="top: 110px; left: 40px;">
+                <div class="node-pulse"></div>
+                <svg class="node-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <path d="M12 8v8"></path>
+                  <path d="M8 12h8"></path>
+                </svg>
+              </div>
+              
+              <!-- Circuit 1: Guard -> Middle -> Exit Nodes -->
+              <div class="node guard-node" style="top: 80px; left: 120px; box-shadow: 0 0 8px rgba(0, 200, 83, 0.5);">
+                <svg class="node-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                </svg>
+              </div>
+              
+              <div class="node middle-node" style="top: 80px; left: 200px; box-shadow: 0 0 8px rgba(0, 200, 83, 0.5);">
+                <svg class="node-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                  <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                </svg>
+              </div>
+              
+              <!-- Circuit 2: Different Guard -> Different Middle -> Same Exit Nodes -->
+              <div class="node guard-node" style="top: 140px; left: 120px; box-shadow: 0 0 8px rgba(0, 162, 255, 0.5);">
+                <svg class="node-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                </svg>
+              </div>
+              
+              <div class="node middle-node" style="top: 140px; left: 200px; box-shadow: 0 0 8px rgba(0, 162, 255, 0.5);">
+                <svg class="node-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                  <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                </svg>
+              </div>
+              
+              <!-- Shared Exit Node -->
+              <div class="node exit-node" style="top: 110px; left: 280px; box-shadow: 0 0 12px rgba(76, 175, 80, 0.6);">
+                <div class="node-pulse"></div>
+                <svg class="node-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
+                  <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
+                  <line x1="6" y1="1" x2="6" y2="4"></line>
+                  <line x1="10" y1="1" x2="10" y2="4"></line>
+                  <line x1="14" y1="1" x2="14" y2="4"></line>
+                </svg>
+              </div>
+              
+              <!-- Destination -->
+              <div class="node destination-node" style="top: 110px; left: 360px;">
+                <svg class="node-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="2" y1="12" x2="22" y2="12"></line>
+                  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                </svg>
+              </div>
+              
+              <!-- Circuit 1 Connections -->
+              <div class="connection primary-connection" style="top: 95px; left: 52px; width: 75px; transform: rotate(-15deg);"></div>
+              <div class="connection primary-connection" style="top: 80px; left: 130px; width: 70px; transform: rotate(0deg);"></div>
+              <div class="connection primary-connection" style="top: 90px; left: 210px; width: 75px; transform: rotate(15deg);"></div>
+              
+              <!-- Circuit 2 Connections -->
+              <div class="connection secondary-connection" style="top: 125px; left: 52px; width: 75px; transform: rotate(15deg);"></div>
+              <div class="connection secondary-connection" style="top: 140px; left: 130px; width: 70px; transform: rotate(0deg);"></div>
+              <div class="connection secondary-connection" style="top: 130px; left: 210px; width: 75px; transform: rotate(-15deg);"></div>
+              
+              <!-- Destination Connection -->
+              <div class="connection standard-connection" style="top: 110px; left: 290px; width: 70px;"></div>
+              
+              <!-- Primary Circuit Data Packets -->
+              <div class="data-packet primary-packet" style="top: 95px; left: 40px; animation: primaryPacketMove 4s infinite; --x1: 30px; --y1: -15px; --x2: 80px; --y2: -30px; --x3: 160px; --y3: -30px; --x4: 240px; --y4: -10px; --x5: 320px; --y5: 0px; --x6: 320px; --y6: 0px;"></div>
+              <div class="data-packet primary-packet" style="top: 95px; left: 40px; animation: primaryPacketMove 4s infinite 1s; --x1: 30px; --y1: -15px; --x2: 80px; --y2: -30px; --x3: 160px; --y3: -30px; --x4: 240px; --y4: -10px; --x5: 320px; --y5: 0px; --x6: 320px; --y6: 0px;"></div>
+              <div class="data-packet primary-packet" style="top: 95px; left: 40px; animation: primaryPacketMove 4s infinite 2s; --x1: 30px; --y1: -15px; --x2: 80px; --y2: -30px; --x3: 160px; --y3: -30px; --x4: 240px; --y4: -10px; --x5: 320px; --y5: 0px; --x6: 320px; --y6: 0px;"></div>
+              <div class="data-packet primary-packet" style="top: 95px; left: 40px; animation: primaryPacketMove 4s infinite 3s; --x1: 30px; --y1: -15px; --x2: 80px; --y2: -30px; --x3: 160px; --y3: -30px; --x4: 240px; --y4: -10px; --x5: 320px; --y5: 0px; --x6: 320px; --y6: 0px;"></div>
+              
+              <!-- Secondary Circuit Data Packets -->
+              <div class="data-packet secondary-packet" style="top: 125px; left: 40px; animation: secondaryPacketMove 4s infinite 0.5s; --x1: 30px; --y1: 15px; --x2: 80px; --y2: 30px; --x3: 160px; --y3: 30px; --x4: 240px; --y4: 10px; --x5: 320px; --y5: 0px; --x6: 320px; --y6: 0px;"></div>
+              <div class="data-packet secondary-packet" style="top: 125px; left: 40px; animation: secondaryPacketMove 4s infinite 1.5s; --x1: 30px; --y1: 15px; --x2: 80px; --y2: 30px; --x3: 160px; --y3: 30px; --x4: 240px; --y4: 10px; --x5: 320px; --y5: 0px; --x6: 320px; --y6: 0px;"></div>
+              <div class="data-packet secondary-packet" style="top: 125px; left: 40px; animation: secondaryPacketMove 4s infinite 2.5s; --x1: 30px; --y1: 15px; --x2: 80px; --y2: 30px; --x3: 160px; --y3: 30px; --x4: 240px; --y4: 10px; --x5: 320px; --y5: 0px; --x6: 320px; --y6: 0px;"></div>
+              <div class="data-packet secondary-packet" style="top: 125px; left: 40px; animation: secondaryPacketMove 4s infinite 3.5s; --x1: 30px; --y1: 15px; --x2: 80px; --y2: 30px; --x3: 160px; --y3: 30px; --x4: 240px; --y4: 10px; --x5: 320px; --y5: 0px; --x6: 320px; --y6: 0px;"></div>
+              
+              <div class="legend">
+                <div class="legend-item">
+                  <div class="legend-color" style="background-color: var(--tor-green);"></div>
+                  <span>Primary Circuit</span>
+                </div>
+                <div class="legend-item">
+                  <div class="legend-color" style="background-color: var(--tor-blue);"></div>
+                  <span>Secondary Circuit</span>
+                </div>
+                <div class="legend-item">
+                  <div class="legend-color" style="background-color: var(--tor-purple);"></div>
+                  <span>Relay Node</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="network-stats">
+            <div class="stat-box">
+              <div class="stat-label">Page Load Time</div>
+              <div class="stat-value conflux-value">9.1s</div>
+            </div>
+            
+            <div class="stat-box">
+              <div class="stat-label">File Download (25MB)</div>
+              <div class="stat-value conflux-value">37s</div>
+            </div>
+            
+            <div class="stat-box">
+              <div class="progress-container">
+                <div class="progress-header">
+                  <div class="progress-label">Network Capacity</div>
+                  <div class="progress-percentage conflux-percentage">85%</div>
+                </div>
+                <div class="progress-bar">
+                  <div class="progress-fill-conflux"></div>
+                </div>
+              </div>
+              
+              <div class="use-cases">
+                <div class="use-case-label">Enhanced Use Cases</div>
+                <div class="tags">
+                  <div class="tag conflux-tag">Video streaming</div>
+                  <div class="tag conflux-tag">Real-time collaboration</div>
+                  <div class="tag conflux-tag">Larger file transfers</div>
+                  <div class="tag conflux-tag">VoIP communications</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+        
