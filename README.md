@@ -9,6 +9,8 @@ To learn more about this in video form click on the picture below:
 To see the comparison go to: 
 [Live View](https://doingfedtime.com/conflux-tor-network-visualization/)
 
+![Conflux Tor Network Visualization](https://github.com/DoingFedTime/TorConfluxVsNoConflux/raw/main/torwithconflux.gif)
+
 ## Overview
 
 This visualization provides a side-by-side comparison between standard Tor routing and Conflux-optimized routing, showing how multipath connections can significantly improve performance while maintaining the same security guarantees.
